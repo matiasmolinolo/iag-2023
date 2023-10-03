@@ -74,21 +74,22 @@ Nuevamente, entrenamos esta red con el dataset del MNIST, pero esta vez sin filt
 
 Es interesante visualizar el espacio latente del VAE y el VAE condicional, que podemos observar en las siguientes figuras:
 
-\begin{figure}
+\begin{figure}[h]
 \begin{subfigure}[h]{0.45\linewidth}
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:enter-label}
+    \includegraphics[width=\linewidth]{VAE/latent_space_vae.png}
+    \caption{Espacio latente del VAE}
+    \label{fig:vae_latent_space}
 \end{subfigure}
 \begin{subfigure}[h]{0.45\linewidth}
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:enter-label}
+    \includegraphics[width=\linewidth]{VAE/latent_space_cvae.png}
+    \caption{Espacio latente del VAE condicional}
+    \label{fig:cvae_latent_space}
 \end{subfigure}
 \end{figure}
 
+Podemos apreciar como en el espacio latente del VAE se generan nuevas imágenes que se asemejan a todas las clases del dataset, mientras que en el espacio latente del VAE condicional se generan nuevas imágenes acotadas a la clase que indicamos como condicional.
 \newpage
 \section{Obligatorio 2}
 
