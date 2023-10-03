@@ -51,7 +51,7 @@ $$
 p(\boldsymbol{x}) = \prod_{d=1}^{D}p(x_{o_d} \mid \boldsymbol{x}_{o_{<d}})
 $$
 
-Para ello, nos basamos en el siguiente repositorio de Github: \url{https://github.com/simonjisu/NADE-pytorch/blob/master/model.py}, pero con ciertas modificaciones.
+Para ello, nos basamos en el siguiente repositorio de Github: \url{https://github.com/simonjisu/NADE-pytorch/blob/master/model.py}, pero con ciertas modificaciones para la optimización de los cálculos.
 
 Nuestra arquitectura usa 192 unidades ocultas, en vez de las 500 propuestas en el paper original. Esto se debe a que tras varios ensayos, encontramos que este número daba una buena performance y un tiempo de ejecución significativamente menor al de la arquitectura original del paper. 
 
