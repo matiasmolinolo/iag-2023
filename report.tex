@@ -19,13 +19,21 @@
 \usepackage{verbatim}
 \usepackage{subcaption}
 
+\renewcommand\Authand{, }
+\renewcommand\Authands{, }
+
 \title{Inteligencia Artificial Generativa - Obligatorio 1}
-\author{Matias Molinolo \and Martina Diaz}
+\author{Matias Molinolo}
+\author{Martina Diaz}
+\affil{Facultad de Ingeniería, Universidad ORT Uruguay}
 
 \date{\today}
 
 \begin{document}
 \maketitle
+\begin{center}
+    \url{https://github.com/matiasmolinolo/iag-2023}
+\end{center}
 \thispagestyle{empty}
 \newpage
 \tableofcontents
@@ -57,16 +65,43 @@ Nuestra arquitectura usa 192 unidades ocultas, en vez de las 500 propuestas en e
 
 El NADE fue entrenado con datos binarizados del dataset MNIST, donde se filtraron todos aquellos elementos que no pertenecían a la clase que quería generarse.
 
-Luego de entrenarlo por 50 epochs, hicimos un muestreo de la distribución estimada por el NADE, obteniendo el siguiente resultado:
+Podemos ver el código de la función \texttt{forward} del NADE a continuación:
+
+\begin{minted}{python3}
+    a = self.c.expand(x.shape[0], -1)
+
+    p_x_hat = []
+
+    for d in range(self.input_dim):
+        h_d = torch.sigmoid(a)
+        p = torch.sigmoid(h_d @ self.V[d:d+1, :].t() + self.b[d:d+1])
+        p_x_hat.append(p)
+        a = x[:, d:d+1] @ self.W[:, d:d+1].t() + a
+
+    probs = torch.cat(p_x_hat, 1)
+    return probs
+\end{minted}
+
+Luego de entrenarlo por 50 epochs, donde alcanzamos una loss de $0.29$, hicimos un muestreo de la distribución estimada por el NADE con el siguiente código:
+\begin{minted}{python3}
+    with torch.no_grad():
+    preds = torch.zeros(1, input_dim).to(device)
+    for i in tqdm(range(input_dim)):
+        p = model.forward(preds)
+        preds[0][i] = torch.bernoulli(p[0][i])
+
+    return torch.reshape(preds.cpu(), (28, 28))
+\end{minted}
+Donde obtuvimos el siguiente resultado:
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.3\textwidth]{NADE/nade_generation.png}
+    \includegraphics[width=0.6\textwidth]{NADE/nade_generation.png}
     \caption{Distribución estimada por el NADE}
     \label{fig:nade_gen}
 \end{figure}
 
-Podemos ver que no es una representación acertada, pero podría decirse que se asemeja a la clase original de los 1. Esto puede deberse a falta de entrenamiento u otros factores.
+Podemos ver que no es una representación totalmente acertada, pero se puede apreciar claramente que se asemeja a la clase original de los 1. Estimamos que esto puede deberse a falta de entrenamiento u otros factores.
 \newpage
 \subsection{VAE: Variational Autoencoder}
 
