@@ -52,7 +52,7 @@ En segundo lugar buscamos aproximar $p(y,o,h,w,t)$ a través de la ecuación $p(
 \begin{table}[h]
 \centering
 \begin{tabular}{c|c|c|c|c||c}
-Outlook                   & Tennis               & Humidity                & Wind                  & Temp & Probability \\ \hline \hline
+\textbf{Outlook}                   & \textbf{Tennis}               & \textbf{Humidity}                & \textbf{Wind}                  & \textbf{Temp} & \textbf{Probability} \\ \hline \hline
 \multirow{4}{*}{Overcast} & \multirow{4}{*}{Yes} & \multirow{2}{*}{High}   & Strong                & Mild & 0.071429    \\ \cline{4-6} 
                           &                      &                         & Weak                  & Hot  & 0.071429    \\ \cline{3-6} 
                           &                      & \multirow{2}{*}{Normal} & Strong                & Cool & 0.071429    \\ \cline{4-6} 
@@ -74,7 +74,21 @@ Outlook                   & Tennis               & Humidity                & Win
 \end{table}
 
 \subsection{Dataset 2: Iris}
-marti
+En este dataset de sklearn buscamos estimar distribuciones de probabilidad continuas. Para calcular las probabilidades $p(y|x)$ y $p(x|y)$, siendo $y$ una variable categórica y $x$ la variable continua `sepal length’, lo que hicimos fue discretizar los datos de $X$ en 10 bins entre $4.3$ y $7.9$. A partir de los mismos calculamos la frecuencia de cada bin para cada clase de $y$, lo que nos permitió calcular las probabilidades. Esto lo hicimos a partir de histogramas, además de ser una ayuda gráfica para observar la distribución de la frecuencia de los datos, también nos permite obtener los valores de esa distribución. También utilizamos numpy para obtener la media y la desviación estándar, esto nos permitió muestrear datos y comprobar que la distribución de probabilidades era una distribución normal.  
+
+(fotos histogramas colores)
+
+Por otra parte, utilizamos también un modelo de tipo mezcla de gaussianas para obtener la probabilidad de $x$, donde la mezcla de gaussianas se calcula de la siguiente manera:
+
+$$
+p(x) = \sum_y p(y) \times \mathcal{N}(\mu_y, \sigma_y)
+$$ 
+
+Siendo $\mu$ la media y $\sigma$ la desviación estándar ya calculadas, muestreamos una clase $y$ equiprobable y dentro de la misma muestreamos $X$ con distribución normal. 
+
+(foto dist normal)
+
+Como resultado observamos 3 normales distintas, cada una con una media y desviación estándar distinta, 
 
 \newpage
 
