@@ -74,7 +74,7 @@ En segundo lugar buscamos aproximar $p(y,o,h,w,t)$ a través de la ecuación $p(
 \end{table}
 
 \subsection{Dataset 2: Iris}
-En este dataset de sklearn buscamos estimar distribuciones de probabilidad continuas. Para calcular las probabilidades $p(y|x)$ y $p(x|y)$, siendo $y$ una variable categórica y $x$ la variable continua `sepal length’, lo que hicimos fue discretizar los datos de $X$ en 10 bins entre $4.3$ y $7.9$. A partir de los mismos calculamos la frecuencia de cada bin para cada clase de $y$, lo que nos permitió calcular las probabilidades. Esto lo hicimos a partir de histogramas, además de ser una ayuda gráfica para observar la distribución de la frecuencia de los datos, también nos permite obtener los valores de esa distribución. También utilizamos numpy para obtener la media y la desviación estándar, esto nos permitió muestrear datos y comprobar que la distribución de probabilidades era una distribución normal.  
+En este dataset de sklearn buscamos estimar distribuciones de probabilidad continuas. Para calcular las probabilidades $p(y|x)$ y $p(x|y)$, siendo $y$ una variable categórica y $x$ la variable continua `sepal length’, lo que hicimos fue discretizar los datos de $X$ en 10 bins entre $4.3$ y $7.9$. A partir de los mismos calculamos la frecuencia de cada bin para cada clase de $y$, lo que nos permitió calcular las probabilidades. Esto lo hicimos a partir de histogramas, además de ser una ayuda gráfica para observar la distribución de la frecuencia de los datos, también nos permite obtener los valores de esa distribución. Además, utilizamos numpy para obtener la media y la desviación estándar, esto nos permitió muestrear datos y comprobar que la distribución de probabilidades era una distribución normal.  
 
 \begin{figure}[h]
 \begin{subfigure}[h]{0.5\linewidth}
@@ -106,7 +106,7 @@ Siendo $\mu$ la media y $\sigma$ la desviación estándar ya calculadas, muestre
     \label{fig:mix-gaussians}
 \end{figure}
 
-Como resultado observamos 3 normales distintas, cada una con una media y desviación estándar distinta, que componen 3 distribuciones de probabilidades distintas. 
+En conclusión, como resultado obtuvimos 3 normales distintas, cada una con una media y desviación estándar distinta, que componen 3 distribuciones de probabilidades distintas.
 
 \begin{table}[h]
 \centering
