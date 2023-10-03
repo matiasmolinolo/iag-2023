@@ -4,5 +4,8 @@
 *.log
 *.out
 *.synctex.gz
+*.toc
+*.bbl
+*.blg
 _minted-*/
 __pycache__/
