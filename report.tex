@@ -77,6 +77,20 @@ En segundo lugar buscamos aproximar $p(y,o,h,w,t)$ a través de la ecuación $p(
 En este dataset de sklearn buscamos estimar distribuciones de probabilidad continuas. Para calcular las probabilidades $p(y|x)$ y $p(x|y)$, siendo $y$ una variable categórica y $x$ la variable continua `sepal length’, lo que hicimos fue discretizar los datos de $X$ en 10 bins entre $4.3$ y $7.9$. A partir de los mismos calculamos la frecuencia de cada bin para cada clase de $y$, lo que nos permitió calcular las probabilidades. Esto lo hicimos a partir de histogramas, además de ser una ayuda gráfica para observar la distribución de la frecuencia de los datos, también nos permite obtener los valores de esa distribución. También utilizamos numpy para obtener la media y la desviación estándar, esto nos permitió muestrear datos y comprobar que la distribución de probabilidades era una distribución normal.  
 
 (fotos histogramas colores)
+\begin{figure}[h]
+\begin{subfigure}[h]{0.5\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{notebooks_clase_1/discretized_data_hist.png}
+    \caption{pone aca }
+    \label{fig:discrete}
+\end{subfigure}
+\begin{subfigure}[h]{0.5\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{notebooks_clase_1/sampled_data_hist.png}
+    \caption{y aca lo que quieras}
+    \label{fig:sampled}
+\end{subfigure}
+\end{figure}
 
 Por otra parte, utilizamos también un modelo de tipo mezcla de gaussianas para obtener la probabilidad de $x$, donde la mezcla de gaussianas se calcula de la siguiente manera:
 
@@ -87,8 +101,34 @@ $$
 Siendo $\mu$ la media y $\sigma$ la desviación estándar ya calculadas, muestreamos una clase $y$ equiprobable y dentro de la misma muestreamos $X$ con distribución normal. 
 
 (foto dist normal)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{notebooks_clase_1/mix_gaussians.png}
+    \caption{Mezcla de gaussianas}
+    \label{fig:mix-gaussians}
+\end{figure}
 
-Como resultado observamos 3 normales distintas, cada una con una media y desviación estándar distinta, 
+Como resultado observamos 3 normales distintas, cada una con una media y desviación estándar distinta, que componen 3 distribuciones de probabilidades distintas. 
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|c}
+\textbf{Setosa}                   & \textbf{Versicolor}               &  \textbf{Virginica} \\ \hline \hline
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+        1.000000 & 0.000000 & 1.000000 \\
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
 
 \newpage
 
