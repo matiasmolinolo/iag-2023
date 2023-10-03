@@ -34,11 +34,37 @@
 \section{Estimación de distribuciones}
 
 \subsection{Dataset 1: Tennis}
-
+marti vos escribis este 
+ok gracias $<$3
+:)
 \subsection{Dataset 2: Iris}
+y este
 
 \section{Modelos generativos}
 \subsection{NADE: Neural Autoregressive Distribution Estimator}
+
+Intentamos reproducir en Pytorch la arquitectura del NADE propuesta por \cite{nade}, con ciertas modificaciones que resultaron de la prueba y error de la arquitectura.
+
+Uria et al. propone una arquitectura autorregresiva que parte de la base que cualquier distribución $D$-dimensional $p$ puede expresarse como un producto de distribuciones unidimensionales \cite{nade}:
+
+$$
+p(\boldsymbol{x}) = \prod_{d=1}^{D}p(x_{o_d} \mid \boldsymbol{x}_{o_{<d}})
+$$
+
+Nuestra arquitectura usa 192 unidades ocultas, en vez de las 500 propuestas en el paper original. Esto se debe a que tras varios ensayos, encontramos que este número daba una buena performance y un tiempo de ejecución significativamente menor al de la arquitectura original del paper. 
+
+El NADE fue entrenado con datos binarizados del dataset MNIST, donde se filtraron todos aquellos elementos que no pertenecían a la clase que quería generarse.
+
+
 \subsection{VAE: Variational Autoencoder}
+
+
+
+\section{Obligatorio 2}
+
+\newpage
+
+\bibliographystyle{ieeetr}
+\bibliography{refs}
 
 \end{document}
